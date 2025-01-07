@@ -14,11 +14,26 @@ public class P2Start
         {
             // Produkter!
             var products = context.Products.ToList();
-            Console.WriteLine("Project 2");
-            foreach (var p in products)
+
+            var table = new Table();
+            // Alternativ för tabellutseende
+            table.Border(TableBorder.Double); // Dubbelram
+            table.BorderColor(Color.Grey); // Sätt en kantfärg
+            table.Title("[underline bold green]Project 2:[/] All Products"); // Lägg till en titel
+
+            // Alternativ för Kolumnerna
+            table.AddColumn(new TableColumn("[bold red]Id[/]"));
+            table.AddColumn(new TableColumn("[bold red]Namn[/]"));
+            foreach (Product product in products)
             {
-                Console.WriteLine($"{p.ProductId}, {p.ProductName}");
+                table.AddRow(
+                    $"[blue]{product.ProductId}[/]",
+                    $"[bold]{product.ProductName}[/]"
+                    );
             }
+
+            AnsiConsole.Write(table);
+
             AnsiConsole.Markup("[green]Press any key to continue![/]");
             Console.ReadLine();
         }

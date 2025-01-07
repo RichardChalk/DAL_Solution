@@ -14,11 +14,26 @@ public class P1Start
         {
             // Customers
             var customers = context.Customers.ToList();
-            Console.WriteLine("Project 1");
-            foreach (var customer in customers)
+
+            var table = new Table();
+            // Alternativ för tabellutseende
+            table.Border(TableBorder.Double); // Dubbelram
+            table.BorderColor(Color.Grey); // Sätt en kantfärg
+            table.Title("[underline bold green]Project 1:[/] All Customers"); // Lägg till en titel
+
+            // Alternativ för Kolumnerna
+            table.AddColumn(new TableColumn("[bold red]Id[/]"));
+            table.AddColumn(new TableColumn("[bold red]Namn[/]"));
+            foreach (Customer customer in customers)
             {
-                Console.WriteLine($"{customer.CustomerId}, {customer.CompanyName}");
+                table.AddRow(
+                    $"[blue]{customer.CustomerId}[/]",
+                    $"[bold]{customer.CompanyName}[/]"
+                    );
             }
+
+            AnsiConsole.Write(table);
+
             AnsiConsole.Markup("[green]Press any key to continue![/]");
             Console.ReadLine();
         }
