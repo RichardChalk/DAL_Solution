@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\Project 2\Project2.csproj" />
+    <ProjectReference Include="..\Project1\Project1.csproj" />
   </ItemGroup>
 
 </Project>
